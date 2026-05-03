@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  chartdb:
+    container_name: chartdb
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_OPENAI_API_KEY: ""
+        VITE_OPENAI_API_ENDPOINT: ""
+        VITE_LLM_MODEL_NAME: ""
+        VITE_HIDE_CHARTDB_CLOUD: "true"
+        VITE_DISABLE_ANALYTICS: "true"
+    restart: unless-stopped
+    ports:
+      - "8080:80"
